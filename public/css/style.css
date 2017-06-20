@@ -1,0 +1,42 @@
+h1,h2{
+  text-align:center;
+}
+
+
+.fade-in-out{
+  transition: 1.0s linear all;
+  opacity:1;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.fade-in-out.ng-hide {
+  opacity: 0;
+}
+
+.fade-in-out-error{
+  transition: 0.5s linear all;
+  opacity:1;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.fade-in-out-error.ng-hide{
+  opacity: 0;
+}
+.give-margin{
+  margin-top: 30px;
+  margin-bottom:30px;
+}
+a, a:visited, a:hover{
+	text-decoration: none;
+	color:#a9a9a9;
+}
+
+.hover-yellow:hover{
+	color:#fff956;
+}
+
+.hover-green:hover{
+	color: #2ecc71;
+}

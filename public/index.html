@@ -1,0 +1,102 @@
+<html>
+<head>
+	<title>File Uploader</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/jquery.fileupload.css" />
+	<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="css/jquery.fileupload-ui.css" />
+	<!-- <link rel="icon" href="favicon.ico" type='image/x-icon'> -->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body ng-app="uploaderAngular" style="background: #333333; color:white;" >
+<div class="header">
+	<h1>File uploader; AngularJs with jQuery File Uploader</h1>
+	<h1>By Stanley Moon</h1>
+	<a class = "hover-green" href="http://stanleymoon.info/" target="_blank" > <h2>My Portfolio Website</h2></a>
+</div>
+
+	<div ng-controller="uploaderController" class="container give-margin">
+
+		<form id="fileupload" file-upload="options" enctype="multipart/form-data"  autocomplete="off" method="POST" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
+	      <br />
+
+		<label class="btn btn-success fileinput-button">
+			<i class="glyphicon glyphicon-plus"></i>
+			Add Files...<input type="file" name="files" ng-disabled="disabled" accept="video/*">
+		</label>
+
+	      <!-- Start Upload Button -->
+	      <button ng-disabled="wrongFormat" type="button" class="btn btn-primary start" ng-click="submit()">
+	        <i class="glyphicon glyphicon-upload"></i>
+	        <span>Start upload</span>
+	      </button>
+	      <table class="table table-inverse files ng-cloak give-margin">
+	        <tr ng-repeat="file in queue" ng-class="{'processing': file.$processing()}">
+	          <td ng-switch data-on="!!file.thumbnailUrl">
+	            <div class="preview" data-ng-switch-when="true">
+	              <a ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" data-gallery><img ng-src="{{file.thumbnailUrl}}" alt=""></a>
+	            </div>
+	            <div class="preview" ng-switch-default data-file-upload-preview="file"></div>
+	          </td>
+	          <td>
+	            <p class="name" data-ng-switch data-on="!!file.url">
+	              <span ng-switch-when="true" data-ng-switch data-on="!!file.thumbnailUrl">
+	                            <a ng-switch-when="true" data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" data-gallery>{{file.name}}</a>
+	                            <a ng-switch-default data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}">{{file.name}}</a>
+	                        </span>
+	              <span ng-switch-default>{{file.name}}</span>
+	            </p>
+	            <strong ng-show="file.error" class="error text-danger">{{file.error}}</strong>
+	          </td>
+	          <td>
+	            <p class="size">{{file.size | formatFileSize}}</p>
+	            <div class="progress progress-striped active fade" data-ng-class="{pending: 'in'}[file.$state()]" data-file-upload-progress="file.$progress()">
+	              <div class="progress-bar progress-bar-success" data-ng-style="{width: num + '%'}"></div>
+	            </div>
+	          </td>
+	          <td>
+							<button type="button" class="btn btn-warning cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
+											<i class="glyphicon glyphicon-ban-circle"></i>
+											<span>Cancel</span>
+									</button>
+						</td>
+	        </tr>
+	      </table>
+	    </form>
+	<div ng-show=showVideo class="container fade-in-out">
+		<h1>Upload Complete</h1>
+		<h2>Here's your video on Wistia: </h2>
+		<script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>
+	<div ng-class= "embedLink" style="height:360px;width:640px margin:0,auto;">&nbsp;</div>
+	</div>
+
+	<div ng-show="showError" class="container fade-in-out-error">
+		<h1>Oops Something went wrong!!</h1>
+		<h2>{{errorMessage}}</h2>
+	</div>
+	</div>
+
+<!-- Bootstrap js -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script> -->
+<script src="js/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="js/jquery.fileupload.js"></script>
+<!-- The File Upload processing plugin -->
+<script src="js/jquery.fileupload-process.js"></script>
+<!-- The File Upload video preview plugin -->
+<script src="js/jquery.fileupload-video.js"></script>
+<!-- The File Upload validation plugin -->
+<script src="js/jquery.fileupload-validate.js"></script>
+<script src="js/jquery.fileupload-ui.js"></script>
+<!-- The File Upload Angular JS module -->
+<script src="js/jquery.fileupload-angular.js"></script>
+
+
+</body>
+</html>
