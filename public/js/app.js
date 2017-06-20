@@ -9,7 +9,7 @@ var app = angular.module('uploaderAngular', ['ngAnimate','blueimp.fileupload'] )
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 }])
 
-.controller('uploaderController', ['$scope','$http', function ($scope, $http){
+.controller('uploaderController', ['$scope','$http','$sce', function ($scope, $http,$sce){
   $scope.title = "HI";
   $scope.key = 'f51248913c389ca1dab3c3385a45f984a4800a1ed7e3ae3ed51bb2501c7b3727';
   $scope.url = 'https://upload.wistia.com/?api_password='+$scope.key;
@@ -18,6 +18,7 @@ var app = angular.module('uploaderAngular', ['ngAnimate','blueimp.fileupload'] )
   $scope.showError = false;
   $scope.wrongFormat = true;
   $scope.errorMessage = '';
+
   //options for file upload. Just setting Wistia upload link
   $scope.options = {
        url: $scope.url
@@ -45,6 +46,9 @@ var app = angular.module('uploaderAngular', ['ngAnimate','blueimp.fileupload'] )
     $scope.showVideo = false;
     $scope.showError = false;
     $scope.wrongFormat = false;
+    $scope.setUrl('exit');
+      // $scope.embedLink = "//fast.wistia.net/embed/iframe/x0zx2sroke";
+      $scope.embedId = '';
     var file = $scope.file;
     //fileuploadadd does not force video files for drag&drop. Do it manually
       if (data.originalFiles[0].type.indexOf('video/') == -1){
@@ -65,7 +69,13 @@ var app = angular.module('uploaderAngular', ['ngAnimate','blueimp.fileupload'] )
     $scope.showVideo= true;
     $scope.showError = false;
     $scope.wrongFormat = true;
-    $scope.embedLink = 'wistia_embed wistia_async_'+ $scope.videoId+' playlistLinks=auto';
-    console.log("EMBED LINK: " + $scope.embedLink);
+    $scope.setUrl($scope.videoId);
   });
+
+  $scope.setUrl = function (id){
+    console.log("SETTING URL");
+    $scope.embedLink = "//fast.wistia.net/embed/iframe/"+$scope.videoId+"?videoFoam=true";
+    $scope.embedLinkUrl = $sce.trustAsResourceUrl($scope.embedLink);
+  };
+
 }]);

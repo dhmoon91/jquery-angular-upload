@@ -11,6 +11,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
 	<script src="js/app.js"></script>
+
 </head>
 <body ng-app="uploaderAngular" style="background: #333333; color:white;" >
 <div class="header">
@@ -72,10 +73,14 @@
 	<div ng-show=showVideo class="container fade-in-out">
 		<h1>Upload Complete</h1>
 		<h2>Here's your video on Wistia: </h2>
-		<script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>
-	<div ng-class= "embedLink" class = "center-block" style="height:360px;width:600px;">&nbsp;</div>
-	</div>
 
+		<div class="wistia_responsive_padding" style="padding:62.5% 0 0 0;position:relative;">
+			<div class="wistia_responsive_wrapper"style="height:100%;left:0;position:absolute;top:0;width:100%;">
+				<iframe ng-if="showVideo" ng-src="{{embedLinkUrl}}" title="Wistia video player" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe>
+			</div>
+	</div>
+		<script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
+	</div>
 	<div ng-show="showError" class="container fade-in-out-error">
 		<h1>Oops Something went wrong!!</h1>
 		<h2>{{errorMessage}}</h2>
