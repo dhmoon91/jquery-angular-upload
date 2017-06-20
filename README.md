@@ -10,7 +10,7 @@ TO RUN Locally, type in: <br/>
 <br/>
 -Using Karma-jasmine for unit tests.<br/>
 -To Run unit tests, run; <strong> karma start</strong> in directory.<br/>
-.<br/>
+<br/>
 -Disabled multiple file upload<br/>
 <br/>
 -Enforced video file format on adding file<br/>
