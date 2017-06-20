@@ -4,7 +4,7 @@ TO RUN Locally, type in: <br/>
 2) npm start
 
 <br/>
-
+If you wish to test using your own Wistia account, you can change the API key to yours in public/js/app.js, line 14 @ $scope.key. <br/>
 <strong>jQuery-angular-uploader App : Few notes</strong><br/>
 -Wistia's free account allows up to 3 video uploads.<br/>
 <br/>
