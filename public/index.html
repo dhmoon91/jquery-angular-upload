@@ -15,8 +15,9 @@
 <body ng-app="uploaderAngular" style="background: #333333; color:white;" >
 <div class="header">
 	<h1>File uploader; AngularJs with jQuery File Uploader</h1>
-	<h1>By Stanley Moon</h1>
-	<a class = "hover-green" href="http://stanleymoon.info/" target="_blank" > <h2>My Portfolio Website</h2></a>
+	<h1>By Stanley Moon:  <a class = "hover-green" href="http://stanleymoon.info/" target="_blank" > Portfolio Website</a> </h1>
+
+	<a class = "hover-green" href="https://github.com/dhmoon91/jquery-angular-upload" target="_blank" > <h2>Github Link of this Project</h2></a>
 </div>
 
 	<div ng-controller="uploaderController" class="container give-margin">
@@ -67,11 +68,12 @@
 	        </tr>
 	      </table>
 	    </form>
+			
 	<div ng-show=showVideo class="container fade-in-out">
 		<h1>Upload Complete</h1>
 		<h2>Here's your video on Wistia: </h2>
 		<script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>
-	<div ng-class= "embedLink" style="height:360px;width:640px margin:0,auto;">&nbsp;</div>
+	<div ng-class= "embedLink" style="height:360px;width:600px margin:0,auto;">&nbsp;</div>
 	</div>
 
 	<div ng-show="showError" class="container fade-in-out-error">
