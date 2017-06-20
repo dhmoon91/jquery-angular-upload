@@ -6,7 +6,8 @@ TO RUN Locally, type in: <br/>
 <br/>
 
 <strong>jQuery-angular-uploader App : Few notes</strong><br/>
-
+-Wistia's free account allows up to 3 video uploads.<br/>
+<br/>
 -Using Karma-jasmine for unit tests.<br/>
 -To Run unit tests, run; <strong> karma start</strong> in directory.<br/>
 .<br/>
@@ -14,7 +15,7 @@ TO RUN Locally, type in: <br/>
 <br/>
 -Enforced video file format on adding file<br/>
 <br/>
--Drag&Drop is still supported on this version with format forcing: <strong>File format enforcing was not available on Drag&Drop feature.</strong> So I am checking manually<br/>
+-Drag&Drop is still supported on this version with format forcing that I implemented manually; <strong>File format enforcing was not supported on Drag&Drop feature from Blueimp-plugin.</strong><br/>
 <br/>
 -App's scope variables change depending on multiple call back events from jquery-file-uploader, which I use to display/edit different components <br/>
 <br/>
